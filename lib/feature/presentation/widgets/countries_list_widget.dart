@@ -42,8 +42,6 @@ class _CountriesListState extends State<CountriesList> {
           return _loadingIndicator();
         } else if (state is CountriesLoaded) {
           countries = state.countriesList;
-        } else if (state is CountriesFilteredLoaded) {
-          countries = state.countriesFilteredList;
         } else if (state is CountriesLoadingError) {
           return Container(
             child: Column(
