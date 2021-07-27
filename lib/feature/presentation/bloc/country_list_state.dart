@@ -21,6 +21,15 @@ class CountriesLoaded extends GetCountriesState {
   List<Object?> get props => [countriesList];
 }
 
+class CountriesFilteredLoaded extends GetCountriesState {
+  final List<CountryEntity> countriesFilteredList;
+
+  CountriesFilteredLoaded({required this.countriesFilteredList});
+
+  @override
+  List<Object?> get props => [countriesFilteredList];
+}
+
 class CountriesLoadingError extends GetCountriesState {
   final String message;
 

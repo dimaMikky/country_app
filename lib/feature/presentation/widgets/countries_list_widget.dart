@@ -41,11 +41,9 @@ class _CountriesListState extends State<CountriesList> {
         } else if (state is CountriesLoading) {
           return _loadingIndicator();
         } else if (state is CountriesLoaded) {
-          mainCountries = state.countriesList;
-          if (filteredCountries.isNotEmpty) {
-            countries = filteredCountries;
-          } else
-            countries = state.countriesList;
+          countries = state.countriesList;
+        } else if (state is CountriesFilteredLoaded) {
+          countries = state.countriesFilteredList;
         } else if (state is CountriesLoadingError) {
           return Container(
             child: Column(
@@ -86,17 +84,8 @@ class _CountriesListState extends State<CountriesList> {
                 hintText: 'Filter by name',
               ),
               onChanged: (string) {
-                setState(() {
-                  if (string.length >= 3) {
-                    filteredCountries = mainCountries
-                        .where((c) => (c.name
-                            .toLowerCase()
-                            .contains(string.toLowerCase())))
-                        .toList();
-                  } else if (string.length == 0) {
-                    filteredCountries = mainCountries;
-                  }
-                });
+                BlocProvider.of<GetCountriesBloc>(context)
+                    .add(GetFilteredCountries(countryString: string));
               },
             ),
             Expanded(

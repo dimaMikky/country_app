@@ -8,3 +8,12 @@ abstract class GetCountriesEvent extends Equatable {
 }
 
 class GetCountries extends GetCountriesEvent {}
+
+class GetFilteredCountries extends GetCountriesEvent {
+  final String countryString;
+
+  GetFilteredCountries({required this.countryString});
+
+  @override
+  List<Object> get props => [countryString];
+}
