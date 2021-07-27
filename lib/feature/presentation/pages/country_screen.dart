@@ -10,13 +10,7 @@ class MyhomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Europe Countries'),
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.search),
-            color: Colors.white,
-          )
-        ],
+        actions: [],
       ),
       body: CountriesList(),
     );
